@@ -1,23 +1,17 @@
 import sys
-from tabelaTransicao import *
+from transicao import *
 from tabelaSimbolos import *
-from analisadorLexico import *
-from analisadorSintatico import *
-from preencheTabelas import *
-from analisadorSemantico import *
+from Lexico import *
+from Sintatico import *
+from tabelasPreenche import *
 import os
 
-# Preenche as tabelas utilizadas pelo Analisador Sintático
-tabelaAcoes = preencheTabelaAcoes()
+tabelaAction = preencheTabelaAcoes()
 tabelaDesvios = preencheTabelaDesvios()
-tabelaQtdSimbolos = preencheTabelaQtdSimbolos()
+tabelaQtdSimbolos = preencheTabelaAction()
 tabelaErros = preencheTabelaErros()
 argumentos = sys.argv
 arqFonte = open("fonte.alg", encoding="utf-8")
 
 nome, extensao = os.path.splitext("fonte.alg")
-
-# Chama o Analisador Sintático
-analisadorSintatico(tabelaAcoes,tabelaDesvios,tabelaQtdSimbolos, tabelaErros, arqFonte, nome)
-
-arqFonte.close()
+analisadorSintatico(tabelaAction,tabelaDesvios,tabelaQtdSimbolos, tabelaErros, arqFonte,)
